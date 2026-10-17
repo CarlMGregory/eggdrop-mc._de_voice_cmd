@@ -1,6 +1,9 @@
 ##
-# (de)Voice Command v1.3 by MC_8 (Carl M. Gregory) <gregory@worldinter.net>
+# (de)Voice Command v1.3.1 by MC_8 (Carl M. Gregory) <gregory@worldinter.net>
 #  for eggdrop 1.5.0 and greater
+#
+# If you have any questions/comments/idea's, please email me!
+# ( Include the script name and version in the title, if you do email me. )
 #
 # My SVS Website - http://mc.purehype.net/
 ##
@@ -23,6 +26,9 @@
 ##
 # History
 ##
+# v1.3.1 (06.27.01)
+#  MC_8 - Eddie - Fixed `Tcl error [mc:pvc:msgm]: invalid command name "return1"`
+#
 # v1.3 (01.30.00)
 #  MC_8 - Added SVS
 #  MC_8 - In addition to "what flaged user do you want to allow", added a disallow
@@ -142,8 +148,8 @@ set mc_pvc(svs:notify) "MC_8"
 ##
 #
 
-set mc_pvc(version) v1.3
-set mc_pvc(svs:script) "(de)voice-cmd 001003000000"
+set mc_pvc(version) v1.3.1
+set mc_pvc(svs:script) "(de)voice-cmd 001003001000"
 set mc_pvc(svs:server) "mc.purehype.net 8085"
 
 if {$numversion < "1050000"} {
@@ -209,7 +215,7 @@ proc mc:pvc:msgm {nick uhost hand args} {
  global mc_pvc
  if {$mc_pvc(privmsg)} {
   foreach chan [channels] {
-   if {[onchan $nick $chan]} {mc:pvc:inter:det $nick $uhost $hand $chan $args;return1}
+   if {[onchan $nick $chan]} {mc:pvc:inter:det $nick $uhost $hand $chan $args;return 1}
   }
  };return 0
 }
